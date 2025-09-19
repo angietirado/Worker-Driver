@@ -1,0 +1,41 @@
+/**
+ *
+ * @author Angie T
+ */
+import java.util.Scanner;
+import java.io.*;
+public class WorldSeriesChampions {
+
+    public static void main(String[] args) throws IOException{
+        String file = "WorldSeriesWinners.txt";
+        
+        Scanner userInput = new Scanner(System.in);
+        
+        System.out.println("Enter the team's name: ");
+        
+        String team = userInput.nextLine();
+        
+        int wins = wins(file, team);
+        
+        System.out.println(team + " won the World Series in the time period from 1903 through 2009 for a total of " + wins + " times" );
+        
+        
+    }
+    public static int wins(String file, String team) throws IOException{
+        int count = 0;
+        
+        File files = new File("WorldSeriesWinners.txt");
+        Scanner scan = new Scanner(files);
+        
+        while(scan.hasNextLine()){
+            String userInput = scan.nextLine();
+            
+            if(userInput.equalsIgnoreCase(team)){
+                count++;
+            }
+        }
+        return count;
+    }
+        
+}
+
